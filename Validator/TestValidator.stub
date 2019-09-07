@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Validators\V1;
+
+use App\Http\Validators\AbstractValidator;
+
+class TestValidator extends AbstractValidator
+{
+    /**
+     * Validation rules
+     *
+     * @var Array
+     */
+    protected $rules = array(
+        'username' => ['required'],
+        'password' => ['required']
+    );
+
+    /**
+     * Validation messages
+     *
+     * @var Array
+     */
+    protected $messages = array(
+        'username.required' => 'username必须输入',
+        'password.required' => 'password必须输入'
+    );
+
+    /**
+     * Validation codes
+     *
+     * @var Array
+     */
+    public $codes = array(
+        'username.required' => '1001',
+        'password.required' => '1002'
+    );
+
+    /**
+     * 预定义规则等
+     * @return AbstractValidator|void
+     */
+    public function before()
+    {
+        //自定义规则检查用户手机号
+        $this->extend('is_phone',function($attribute,$value,$paramters){
+            if (preg_match('/^1[3|4|5|6|7|8|9]\d{9}$/', $value)) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+}
