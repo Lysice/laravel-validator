@@ -1,0 +1,14 @@
+{
+    "name": "lysice/laravel-validator",
+    "description": "a validator packagevalidators in route files, that can be more elegant.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lysice",
+            "email": "snowist@126.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
